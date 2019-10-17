@@ -5,6 +5,11 @@ GP-MaL using ALL neighburs entry point is tests.featureLearn.FLNeighbours
 
 Uses JUnit via tests.Tests to run on a range of different datasets automatically, e.g. a_irisTest()  
 
+Alternatively, there is an exectuable jar that can be used at target/gp-mal-eurogp-19-bin.jar in the form:
+java -jar gp-mal-eurogp-19-bin.jar "tests.featureLearn.FLNeighboursFG#a_irisTest" for the Iris dataset. The "a_irisTest" corresponds to the dataset being tested, which is stored inside the jar (see tests.Tests). 
+
+I can probably find a nicer way so datasets can be provided directly from the command line if the above is too obnoxious. let me know.
+
 datasets are in the datasets/ folder and use a variation on CSV format. You may want to adapt this...  
 
 e.g. iris.data:
