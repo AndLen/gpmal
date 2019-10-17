@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="featureLearn">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/src/main/java/featureLearn/Simple_tSNE.zip!/" />
+      <root url="jar://$PROJECT_DIR$/src/main/java/featureLearn/tsne_python.zip!/" />
+      <root url="jar://$PROJECT_DIR$/src/main/java/featureLearn/GP-GOMEA.zip!/" />
+      <root url="jar://$PROJECT_DIR$/src/main/java/featureLearn/fast_tsne.zip!/" />
+      <root url="jar://$PROJECT_DIR$/src/main/java/featureLearn/tSNE_matlab.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

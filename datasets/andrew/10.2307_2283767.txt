@@ -1,0 +1,14 @@
+@article{10.2307/2283767,
+ ISSN = {01621459},
+ URL = {http://www.jstor.org/stable/2283767},
+ abstract = {This paper deals with methods of "cluster analysis". In particular we attack the problem of exploring the structure of multivariate data in search of "clusters". The approach taken is to use a computer procedure to obtain the "best" partition of n objects into g groups. A number of mathematical criteria for "best" are discussed and related to statistical theory. A procedure for optimizing the criteria is outlined. Some of the criteria are compared with respect to their behavior on actual data. Results of data analysis are presented and discussed.},
+ author = {H. P. Friedman and J. Rubin},
+ journal = {Journal of the American Statistical Association},
+ number = {320},
+ pages = {1159--1178},
+ publisher = {[American Statistical Association, Taylor & Francis, Ltd.]},
+ title = {On Some Invariant Criteria for Grouping Data},
+ volume = {62},
+ year = {1967}
+}
+
