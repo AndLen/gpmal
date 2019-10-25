@@ -4,12 +4,15 @@ import data.Instance;
 import ec.util.Parameter;
 import ec.util.ParameterDatabase;
 
-import java.io.*;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.PrintStream;
 import java.math.BigDecimal;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.*;
+import java.util.Date;
+import java.util.Properties;
 import java.util.concurrent.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -276,21 +279,24 @@ public class Util {
         public final String ECJ_OUT;
         public final Path DIRECTORY;
         public final String timestamp;
+        public final String longPrefix;
         private final BufferedWriter FILE_OUT;
         private final PrintStream SYSTEM_OUT = System.out;
         private int count = 0;
+        public String customLogPath;
 
         public LoggerStream(String prefix) {
             try {
                 timestamp = CONFIG.getProperty("jobID", String.format("%6d", (int) (Math.random() * 10000000)));
-                String customLogPath = CONFIG.getProperty("customLogPath");
+                customLogPath = CONFIG.getProperty("customLogPath");
                 if (customLogPath == null) {
                     customLogPath = System.getProperty("user.home");
                 }
                 String dateComp = new Date().toString().replaceAll("[\\s:]", "-") + "-" + timestamp;
-                Path path = Paths.get(customLogPath, "/masters/output/", prefix + "-" + dateComp + ".out");
-                ECJ_OUT = Paths.get(customLogPath, "/masters/output/", prefix + "-" + dateComp + ".ecj").toString();
-                PARETO_OUT = Paths.get(customLogPath, "/masters/output/", prefix + "-" + dateComp + ".pareto").toString();
+                longPrefix = "/gpmal/" + prefix + "-" + dateComp;
+                Path path = Paths.get(customLogPath, longPrefix + ".out");
+                ECJ_OUT = Paths.get(customLogPath, longPrefix + ".ecj").toString();
+                PARETO_OUT = Paths.get(customLogPath, longPrefix + ".pareto").toString();
 
                 System.out.println(path.toAbsolutePath().toString());
                 DIRECTORY = path.getParent();

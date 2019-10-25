@@ -83,7 +83,7 @@ public class FeatureLearner {
                     FEAT_INDEX[j] = i + j;
                 }
                 initSourcePrefix();
-                List<List<String>> results = createEncoding(processedInstances, valuedFeatures);
+                List<List<String>> results = createEncoding(processedInstances, valuedFeatures).csv;
                 allLines.add(results.get(0));
                 rfLines.add(results.get(1));
 
@@ -165,8 +165,7 @@ public class FeatureLearner {
         SOURCE_PREFIX = sourcePrefix.toString();
     }
 
-
-    static List<List<String>> createEncoding(List<Instance> processedInstances, List<ValuedFeature> valuedFeatures) {
+    static FLResult createEncoding(List<Instance> processedInstances, List<ValuedFeature> valuedFeatures) {
         setupInputs(valuedFeatures);
         int numFeatures = FEAT_INDEX.length;
 
@@ -201,8 +200,7 @@ public class FeatureLearner {
 
 
         EvolutionState state = doGP();
-
-        return gpToCSV(processedInstances, state);
+        return new FLResult(gpToCSV(processedInstances, state), state);
 
     }
 
@@ -317,7 +315,7 @@ public class FeatureLearner {
         //   individual.printIndividualForHumans(state, 0);
 
         try {
-            FeatureLearner.writeOut(created, output1, "gp%s%dCreatedF-" + individual.fitness.fitness() + "cmaes");
+            FeatureLearner.writeOut(created, output1, "gp%s%dCreatedF-" + individual.fitness.fitness());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -581,5 +579,17 @@ public class FeatureLearner {
         allFS = formatForSaving(instances, allLines);
         writeOut(allLines, allFS, "pca-only-%s%d");
 
+    }
+
+    public static class FLResult {
+
+        final List<List<String>> csv;
+        final EvolutionState state;
+
+        public FLResult(List<List<String>> csv, EvolutionState state) {
+
+            this.csv = csv;
+            this.state = state;
+        }
     }
 }
