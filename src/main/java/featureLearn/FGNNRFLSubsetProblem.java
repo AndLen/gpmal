@@ -32,7 +32,7 @@ public class FGNNRFLSubsetProblem extends FuzzyGaussianNNRankingFLProblem {
             for (int j = 0; j < 10; j++) {
                 //If i = 1, then will go [20
                 int nextF = base + (stepMultiplier * j);
-                if (nextF >= numInstances) {
+                if (nextF >= numInstances -1) {
                     System.out.println(toRespect);
                     return toRespect;
                 }
